@@ -2,8 +2,8 @@ import React from 'react'
 
 function Home() {
   return (
-    <div>
-        hay
+    <div className='text-[30px] text-[red]' >
+        Home page
     </div>
   )
 }
