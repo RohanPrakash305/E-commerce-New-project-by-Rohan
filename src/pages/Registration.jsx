@@ -1,16 +1,42 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Logo from "../assets/logo.png"
 import google from '../assets/google.png'
 import { useNavigate } from 'react-router-dom'
 import { TiEyeOutline } from "react-icons/ti";
 import { IoEyeSharp } from "react-icons/io5";
+import { authDataContext } from '../context/AuthContext';
+import axios from 'axios'
+
 
 
 function Registration() {
 
+      let {serverUrl} = useContext(authDataContext)
       let [show,setShow] = useState(false)
 
+      let [name,setName] = useState("")
+      let [email,setEmail] = useState("")
+      let [password,setPassword] = useState("")
+
      let navigate = useNavigate()
+       
+     const handleSignup = async(e)=>{
+
+        e.preventDefault()
+
+      try {
+        const result = await axios.post(serverUrl + '/api/auth/registration',{
+          mame,email,password
+        },{withCredentials:true})
+
+        console.log(result.data)
+        
+      } catch (error) {
+
+        console.log("error")
+      }
+     }
+
   return (
   <div className='w-[100vw] h-[100vh] bg-gradient-to-l from-[#7b7474] to-[#5f8993] text-[black] 
        flex flex-col items-center justify-start'>
@@ -32,7 +58,7 @@ function Registration() {
         <div className='nax-w-[600px] w-[50%] h-[450px] bg-[#292926] border-[1px]border[#96969635]
           backdrop:blur-2xl rounded-lg shado-lg flex items-center justify-center'>
 
-               <form action="" className='w-[90%] h-[90%] flex flex-col items-center jaustify-start gap-[20px]'> 
+               <form action=""onSubmit={handleSignup} className='w-[90%] h-[90%] flex flex-col items-center jaustify-start gap-[20px]'> 
 
                    <div className='w-[90%] h-[15%] bg-[#5c5858] rounded-lg flex items-center 
                              justify-center gap-[20px] cursor-pointer '>
@@ -41,7 +67,7 @@ function Registration() {
 
 
                    <div className='w-[100%] h-[20px] flex items-center justify-center gap-[10px]'>
-                     <div className='w-[40%] h[1px] bg-[#bb858e]'></div> OR<div className='w-[40%] h[1px] bg-[pink]'></div>
+                     <div className='w-[40%] h[1px] bg-[#bb858e]'></div> OR <div className='w-[40%] h[1px] bg-[pink]'></div>
                    </div>
 
 
@@ -50,15 +76,17 @@ function Registration() {
                     <input type="text" className='w-[100%] h-[50px] border-[2px]
                              border-[#96969635] backdrop:blur-sm rounded-lg shadow-lg 
                              bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold'
-                           placeholder = 'UserNaame' required/>
+                           placeholder = 'UserNaame' required onClick={(e)=> setName(e.target.value)} value = {name}/>
 
                      <input type="text" className='w-[100%] h-[50px] border-[2px]
                      border-[#96969635] backdrop:blur-sm rounded-lg shadow-lg 
-                     bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold' placeholder='Email' required/>
+                     bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold' 
+                     placeholder='Email' required onClick={(e)=> setEmail(e.target.value)} value = {email}/>
 
                      <input type={show?"text":'password'} className='w-[100%] h-[50px] border-[2px]
                          border-[#96969635] backdrop:blur-sm rounded-lg shadow-lg 
-                          bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold'placeholder='Password'/>
+                          bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold'
+                          placeholder='Password'onClick={(e)=> setPassword(e.target.value)} value = {password}/>
 
                      {!show && <TiEyeOutline  className='w-[20px] h-[20px] cursor-pointer  right-[5%] absolute'
                       onClick={()=>setShow(prev =>!prev)}/>}
