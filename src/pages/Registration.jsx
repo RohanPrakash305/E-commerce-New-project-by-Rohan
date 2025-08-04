@@ -25,15 +25,14 @@ function Registration() {
         e.preventDefault()
 
       try {
-        const result = await axios.post(serverUrl + '/api/auth/registration',{
-          name,email,password
-        },{withCredentials:true})
+        const result = await axios.post(serverUrl + '/api/auth/registration',
+          { name,email,password},{withCredentials:true})
 
         console.log(result.data)
         
       } catch (error) {
 
-        console.log(error)
+        console.log(error.resonse.data.message)
       }
      }
 
@@ -84,7 +83,7 @@ function Registration() {
                      bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold' 
                      placeholder='Email' required onChange={(e)=> setEmail(e.target.value)} value = {email}/>
 
-                     <input type={show?"text":'password'} className='w-[100%] h-[50px] border-[2px]
+                     <input type={show? "text":'password'} className='w-[100%] h-[50px] border-[2px]
                          border-[#96969635] backdrop:blur-sm rounded-lg shadow-lg 
                           bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold'
                           placeholder='Password'onChange={(e)=> setPassword(e.target.value)} value = {password}/>

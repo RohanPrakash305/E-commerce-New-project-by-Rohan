@@ -26,8 +26,10 @@ function Login() {
          
         let result = await axios.post(serverUrl + '/api/auth/login',{email,password},{withCredentials:true})
           console.log(result.data)
+
       } catch (error) {
-        console.log(error)
+
+        console.log(error,"what")
       }
      }
   return (
@@ -37,7 +39,7 @@ function Login() {
 
        <div className='w-[100%] h-[70px] flex items-center justify-start px-[20px] gap-[10px]
        cursor-pointer' onClick={()=>navigate("/")}>
-        <img className = 'w-[100px]' src={Logo} alt="" /> 
+        <img className = 'w-[40px]' src={Logo} alt="" /> 
         <h1 className='text-[22px] font-sans'>OneCart</h1>
        </div>
     
@@ -70,12 +72,12 @@ function Login() {
                      <input type="text" className='w-[100%] h-[50px] border-[2px]
                      border-[#96969635] backdrop:blur-sm rounded-lg shadow-lg 
                      bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold' 
-                     placeholder='Email' required onChange={(e)=>setEmail(e.tergat.value)} value={email}/>
+                     placeholder='Email' required onChange={(e)=>setEmail(e.target.value)} value={email}/>
 
                      <input type={show?"text":'password'} className='w-[100%] h-[50px] border-[2px]
                      border-[#96969635] backdrop:blur-sm rounded-lg shadow-lg 
                      bg-transparent placeholder-[#ffffffc7] px-[20px] font-semibold'
-                     placeholder='Password'required onChange={(e)=>setPassword(e.tergat.value)} value={password}/>
+                     placeholder='Password'required onChange={(e)=>setPassword(e.target.value)} value={password}/>
 
                      {!show && <TiEyeOutline  className='w-[20px] h-[20px] cursor-pointer  right-[5%] bottom-[57%] absolute'
                       onClick={()=>setShow(prev =>!prev)}/>}
