@@ -6,6 +6,7 @@ import { TiEyeOutline } from "react-icons/ti";
 import { IoEyeSharp } from "react-icons/io5";
 import { authDataContext } from '../context/AuthContext';
 import axios from 'axios'
+import { signInWithPopup } from 'firebase/auth';
 
 
 
@@ -36,6 +37,17 @@ function Registration() {
       }
      }
 
+     const googleSignup = async()=>{
+      try {
+             const response = await signInWithPopup(auth,provider)  
+             
+             console.log(response)
+
+      } catch (error) {
+        
+      }
+     }
+
   return (
   <div className='w-[100vw] h-[100vh] bg-gradient-to-l from-[#7b7474] to-[#5f8993] text-[black] 
        flex flex-col items-center justify-start'>
@@ -61,7 +73,7 @@ function Registration() {
                jaustify-start gap-[20px]'> 
 
                    <div className='w-[90%] h-[15%] bg-[#5c5858] rounded-lg flex items-center 
-                             justify-center gap-[20px] cursor-pointer '>
+                             justify-center gap-[20px] cursor-pointer 'onClick={googleSignup}>
                      <img src={google} alt="" className='w-[30px]'/> Registration with googal
                    </div>
 

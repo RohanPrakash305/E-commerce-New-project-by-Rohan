@@ -45,7 +45,7 @@ function Login() {
     
 
         <div className='w-[100%] h-[100px] flex items-center justify-start flex-col gap-[10px]'>
-         <span className='text-[25px] font-semibold'>Registration Page</span>
+         <span className='text-[25px] font-semibold'>Login Page</span>
          <span className='text[16px]'>welcome to OneCart, Place your order</span>
         </div>
         
@@ -57,12 +57,12 @@ function Login() {
 
                 <div className='w-[90%] h-[15%] bg-[#5c5858] rounded-lg flex items-center 
                 justify-center gap-[20px] cursor-pointer '>
-                  <img src={google} alt="" className='w-[30px]'/> Registration with googal
+                  <img src={google} alt="" className='w-[30px]'/> Login acount with googal
                 </div>
 
 
                 <div className='w-[100%] h-[20px] flex items-center justify-center gap-[10px]'>
-                  <div className='w-[40%] h-[1px] bg-[#bb858e]'></div> OR<div className='w-[40%] h-[1px] bg-[pink]'></div>
+                  <div className='w-[40%] h-[1px] bg-[#bb858e]'></div>OR<div className='w-[40%] h-[1px] bg-[pink]'></div>
                 </div>
 
 
