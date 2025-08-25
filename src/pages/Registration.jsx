@@ -7,6 +7,9 @@ import { IoEyeSharp } from "react-icons/io5";
 import { authDataContext } from '../context/AuthContext';
 import axios from 'axios'
 import { signInWithPopup } from 'firebase/auth';
+import {auth, provider } from '../../Utils/Firebase';
+
+
 
 
 
@@ -40,11 +43,19 @@ function Registration() {
      const googleSignup = async()=>{
       try {
              const response = await signInWithPopup(auth,provider)  
+              
+             let user = response.user
+             let name = user.displayName
+             let email = user.email 
+
+             const result = await axios.post(serverUrl + "/api/auth/googlelogin",{name,email},{withCredentials : true})
+
+             console.log(result.data)
              
              console.log(response)
 
       } catch (error) {
-        
+        console.log(error)
       }
      }
 
@@ -73,7 +84,8 @@ function Registration() {
                jaustify-start gap-[20px]'> 
 
                    <div className='w-[90%] h-[15%] bg-[#5c5858] rounded-lg flex items-center 
-                             justify-center gap-[20px] cursor-pointer 'onClick={googleSignup}>
+                             justify-center gap-[20px] cursor-pointer ' onClick={googleSignup }>
+                              
                      <img src={google} alt="" className='w-[30px]'/> Registration with googal
                    </div>
 

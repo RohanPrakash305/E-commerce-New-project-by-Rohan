@@ -6,6 +6,8 @@ import { TiEyeOutline } from "react-icons/ti"
 import { IoEyeSharp } from "react-icons/io5"
 import { authDataContext } from '../context/AuthContext'
 import axios from 'axios'
+import { signInWithPopup } from 'firebase/auth';
+import {auth, provider } from '../../Utils/Firebase';
 
 
 function Login() {
@@ -29,9 +31,28 @@ function Login() {
 
       } catch (error) {
 
-        console.log(error,"what")
+        console.log(error)
       }
      }
+     const googlelogin = async()=>{
+           try {
+                  const response = await signInWithPopup(auth,provider)  
+                   
+                  let user = response.user
+                  let name = user.displayName
+                  let email = user.email 
+     
+                  const result = await axios.post(serverUrl + "/api/auth/googlelogin",{name,email},{withCredentials : true})
+     
+                  console.log(result.data)
+                  
+                  console.log(response)
+     
+           } catch (error) {
+             console.log(error)
+           }
+          }
+
   return (
   <div className='w-[100vw] h-[100vh] bg-gradient-to-l from-[#7b7474] to-[#5f8993] text-[black] 
        flex flex-col items-center justify-start'>
@@ -56,7 +77,7 @@ function Login() {
                <form action="" onSubmit={handleLogin} className='w-[90%] h-[90%] flex flex-col items-center jaustify-start gap-[20px]'> 
 
                 <div className='w-[90%] h-[15%] bg-[#5c5858] rounded-lg flex items-center 
-                justify-center gap-[20px] cursor-pointer '>
+                justify-center gap-[20px] cursor-pointer ' onClick={googlelogin}>
                   <img src={google} alt="" className='w-[30px]'/> Login acount with googal
                 </div>
 
