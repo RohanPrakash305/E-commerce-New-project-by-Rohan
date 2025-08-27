@@ -5,21 +5,21 @@ export const authDataContext = createContext()
 
 
 
-function AuthContext({children}) {
+function AuthContext({ children }) {
 
   let serverUrl = "http://localhost:8000"
 
   let value = {
-     serverUrl
+    serverUrl
   }
   return (
     <div>
 
-       < authDataContext.Provider value = {value}>
+      < authDataContext.Provider value={value}>
 
         {children}
 
-       </authDataContext.Provider>
+      </authDataContext.Provider>
 
     </div>
   )
