@@ -22,7 +22,7 @@ function Registration() {
   let [name, setName] = useState("")
   let [email, setEmail] = useState("")
   let [password, setPassword] = useState("")
-  let { userdata, getCurrentUser } = useContext(userDataContext)
+  // let { userdata, getCurrentUser } = useContext(userDataContext)
 
   let navigate = useNavigate()
 
@@ -35,7 +35,7 @@ function Registration() {
         { name, email, password }, { withCredentials: true })
 
       // getCurrentUser()
-      // navigate("/")
+      //  navigate("/")
 
       console.log(result.data)
 
