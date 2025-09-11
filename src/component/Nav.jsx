@@ -10,6 +10,7 @@ import { IoSearchCircleSharp } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
 
+
 function Nav() {
 
   let {getCurrentUser,userData} =useContext(userDataContext)
@@ -64,17 +65,17 @@ function Nav() {
       <div className='w-[30%] flex items-center justify-end
            gap-[20px]'>
 
-         {!showSearch && <IoSearchCircleOutline className='w-[38px] h-[38px]
+         {! showSearch && <IoSearchCircleOutline className='w-[38px] h-[38px]
             text-[#000000] cursor-pointer'  onClick={()=>setShowSearch(prev=>!prev)}/>}
 
          { showSearch && <IoSearchCircleSharp className='w-[37px] h-[37px]
             text-[#000000] cursor-pointer'  onClick={()=>setShowSearch(prev=>!prev)}/>}
             
-         { !userData && <FaUserCircle  className='w-[30px] h-[30px] 
+         { ! userData && <FaUserCircle  className='w-[30px] h-[30px] 
              text-[#000000] cursor-pointer' />} 
 
          {  userData && <div className ='w-[31px] h-[31px] bg-[black] text-[white] roundend-full 
-               flex items-center justify-center cursor-pointer' onChange={()=>setShowProfile(prev=>!prev)}>
+               flex items-center justify-center cursor-pointer' onClick={()=>setShowProfile(prev =>!prev)}>
                 {userData?.name.slice(0,1)}
             </div>}
 

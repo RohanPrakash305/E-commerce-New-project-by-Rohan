@@ -29,10 +29,11 @@ function Login() {
     e.preventDefault()
     try {
 
-      let result = await axios.post(serverUrl + '/api/auth/login', { email, password }, { withCredentials: true })
-      console.log(result.data)
-      getCurrentUser()
-      navigate("/")
+      let result = await axios.post(serverUrl + '/api/auth/login', { email, password },
+         { withCredentials: true })
+         console.log(result.data)
+            getCurrentUser()
+            navigate("/")
 
     } catch (error) {
 
