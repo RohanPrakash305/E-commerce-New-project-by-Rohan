@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { TiEyeOutline } from "react-icons/ti";
 import { IoEyeSharp } from "react-icons/io5";
 import { authDataContext } from '../context/AuthContext';
-import axios from 'axios'
+import axios, { Axios } from 'axios'
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../../Utils/Firebase';
 import { userDataContext } from '../context/UserContext';
@@ -47,7 +47,7 @@ function Registration() {
 
   const googleSignup = async () => {
     try {
-      const response = await signInWithPopup(auth, provider)
+      const response = await signInWithPopup(auth,provider)
 
       let user = response.user
       let name = user.displayName
@@ -57,7 +57,7 @@ function Registration() {
 
       console.log(result.data)
 
-      console.log(response)
+      // console.log(response)
 
     } catch (error) {
       console.log(error)

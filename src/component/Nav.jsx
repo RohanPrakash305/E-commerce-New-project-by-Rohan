@@ -74,14 +74,13 @@ function Nav() {
          { ! userData && <FaUserCircle  className='w-[30px] h-[30px] 
              text-[#000000] cursor-pointer' />} 
 
-         {  userData && <div className ='w-[31px] h-[31px] bg-[black] text-[white] roundend-full 
-               flex items-center justify-center cursor-pointer' onClick={()=>setShowProfile(prev =>!prev)}>
-                {userData?.name.slice(0,1)}
-            </div>}
+         {  userData && <div className ='w-[31px] h-[31px] bg-[black] text-[white] rounded-full 
+               flex items-center justify-center cursor-pointer'onClick={()=>setShowProfile(pre=!pre)}>
+                {userData?.name.slice(0,1)} </div>}
 
             
-         <IoMdCart  className='w-[30px] h-[30px]
-            text-[#000000] cursor-pointer '/> 
+                 <IoMdCart  className='w-[30px] h-[30px]
+                           text-[#000000] cursor-pointer '/> 
 
             <p className='absolute w-[18px] h-[18px] items-center
              justify-center bg-[blue]  px-[4px] py-[2px] 
@@ -97,7 +96,7 @@ function Nav() {
             placeholder='Search Here'/>
         </div>}
 
-       { showProfile && <div className='aabsolute w-[220px] h-[150px] bg-[#0b0808] top-[110%] right-[4%]
+       { showProfile && <div className='absolute w-[220px] h-[150px] bg-[#0b0808] top-[110%] right-[4%]
            border-[1px] border-[#aaa9a9] rounded-[10px] z-10'>
 
             <ul className='w-[100%] h-[100%] flex items-center justify-around flex-col

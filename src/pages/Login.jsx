@@ -29,11 +29,11 @@ function Login() {
     e.preventDefault()
     try {
 
-      let result = await axios.post(serverUrl + '/api/auth/login', { email, password },
-         { withCredentials: true })
-         console.log(result.data)
-            getCurrentUser()
-            navigate("/")
+      let result = await axios.post(serverUrl + '/api/auth/login', { email, password }, { withCredentials: true })
+      console.log(result.data)
+      
+      getCurrentUser()
+      navigate("/")
 
     } catch (error) {
 
@@ -42,7 +42,7 @@ function Login() {
   }
   const googlelogin = async () => {
     try {
-      const response = await signInWithPopup(auth, provider)
+      const response = await signInWithPopup(Auth, provider)
 
       let user = response.user
       let name = user.displayName
@@ -52,7 +52,7 @@ function Login() {
 
       console.log(result.data)
 
-      console.log(response)
+      // console.log(response)
 
     } catch (error) {
       console.log(error)
